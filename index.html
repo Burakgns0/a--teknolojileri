@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INT101 - Ağ Teknolojileri Ders Portalı</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option-btn { transition: all 0.2s ease-in-out; }
+        .option-btn:hover { background-color: #f1f5f9; }
+        .correct-ans { background-color: #d1fae5 !important; border-color: #10b981 !important; color: #065f46 !important; font-weight: bold; }
+        .wrong-ans { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased h-screen flex overflow-hidden">
+
+    <!-- SOL MENÜ (SIDEBAR) -->
+    <aside class="w-72 bg-slate-900 text-slate-100 flex flex-col shadow-xl flex-shrink-0">
+        <div class="p-5 text-lg font-bold border-b border-slate-800 flex items-center space-x-3 bg-slate-950">
+            <span class="text-2xl">🌐</span>
+            <div>
+                <div class="text-indigo-400 text-xs uppercase tracking-wider">INT101</div>
+                <div>Ağ Teknolojileri</div>
+            </div>
+        </div>
+        <nav class="flex-1 overflow-y-auto p-4 space-y-1" id="nav-menu">
+            <button onclick="switchTab('modul1')" id="btn-modul1" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition flex items-center justify-between bg-indigo-600 text-white shadow-md">
+                <span>1. Hafta: Giriş & Ağ Türleri</span>
+                <span class="text-xs bg-indigo-800 px-2 py-0.5 rounded">Not + Test</span>
+            </button>
+            <button onclick="switchTab('modul2')" id="btn-modul2" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 transition flex items-center justify-between">
+                <span>2. Hafta: Sayısal Haberleşme</span>
+                <span class="text-xs bg-slate-800 px-2 py-0.5 rounded">Not + Test</span>
+            </button>
+            <button onclick="switchTab('modul3')" id="btn-modul3" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 transition flex items-center justify-between">
+                <span>3. Hafta: Kablolar & Ortamlar</span>
+                <span class="text-xs bg-slate-800 px-2 py-0.5 rounded">Not + Test</span>
+            </button>
+            <button onclick="switchTab('modul4')" id="btn-modul4" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 transition flex items-center justify-between">
+                <span>4. Hafta: OSI Referans Modeli</span>
+                <span class="text-xs bg-slate-800 px-2 py-0.5 rounded">Not + Test</span>
+            </button>
+            <button onclick="switchTab('modul5')" id="btn-modul5" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 transition flex items-center justify-between">
+                <span>5. Hafta: Ağ Topolojileri</span>
+                <span class="text-xs bg-slate-800 px-2 py-0.5 rounded">Not + Test</span>
+            </button>
+            <div class="pt-4 mt-4 border-t border-slate-800">
+                <button onclick="switchTab('genelSinav')" id="btn-genelSinav" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-bold text-amber-400 hover:bg-amber-500/10 border border-amber-500/30 transition flex items-center justify-between">
+                    <span>🏆 Genel Tüm Konular Sınavı</span>
+                    <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">40 Soru</span>
+                </button>
+            </div>
+        </nav>
+        <div class="p-4 border-t border-slate-800 text-xs text-slate-400 text-center">
+            Ağ Teknolojileri Çalışma Alanı © 2026
+        </div>
+    </aside>
+
+    <!-- SAĞ İÇERİK ALANI (MAIN CONTENT) -->
+    <main class="flex-1 overflow-y-auto bg-gray-50 p-6 md:p-10">
+        
+        <!-- MODÜL 1 -->
+        <section id="modul1" class="tab-content space-y-8 max-w-5xl mx-auto">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-sm uppercase tracking-wider">
+                    <span>1. Hafta Ders Özetleri</span>
+                </div>
+                <h1 class="text-3xl font-extrabold text-gray-900">Bilgisayar Ağlarına Giriş, Tarihçe ve Ağ Türleri</h1>
+                <hr class="border-gray-100">
+                <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4">
+                    <p><strong>Ağ (Network) Nedir?</strong> İki veya daha fazla bilgisayarın veri, donanım (yazıcı, modem vb.) ve yazılım kaynaklarını ortaklaşa kullanabilmek için birbirine bağlanmasıdır. Ağlar maliyeti azaltır, yüksek güvenilirlik ve yüksek işlem hızı sağlar.</p>
+                    
+                    <h3 class="text-lg font-bold text-gray-800 pt-2">Temel Ağ Kavramları:</h3>
+                    <ul class="list-disc pl-6 space-y-1">
+                        <li><strong>Sunucu (Server):</strong> Ağdaki tüm kaynakları yöneten, yüksek performanslı ana bilgisayardır (Dosya, Web, Veritabanı vb.).</li>
+                        <li><strong>İş İstasyonu (Workstation / İstemci):</strong> Ağda yönetici niteliği olmayan, sunucudaki kaynaklara erişen terminal bilgisayarlardır.</li>
+                    </ul>
+
+                    <h3 class="text-lg font-bold text-gray-800 pt-2">Ağların Tarihçesi:</h3>
+                    <p>İlk ağ, 1969 yılında ABD Savunma Bakanlığı (DARPA) tarafından olası bir savaşta iletişimin kesilmemesi amacıyla paket anahtarlamalı olarak geliştirilen <strong>ARPANET</strong>'tir. 1983'te TCP/IP standartlaşmış, 1984'te ise internetin telefon rehberi kabul edilen <strong>DNS (Domain Name System)</strong> geliştirilmiştir.</p>
+
+                    <h3 class="text-lg font-bold text-gray-800 pt-2">Ağların Sınıflandırılması:</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 mb-1">Fiziksel Büyüklüğe Göre</h4>
+                            <p class="text-xs text-gray-600"><strong>PAN/VPN:</strong> Kişisel Alan Ağları<br><strong>LAN:</strong> Yerel Alan Ağları (Ev, Ofis)<br><strong>MAN:</strong> Metropol Alan Ağları (Şehir)<br><strong>WAN:</strong> Geniş Alan Ağları (İnternet)</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 mb-1">Kurulum Şekline Göre</h4>
+                            <p class="text-xs text-gray-600"><strong>Eşler Arası (Peer-to-Peer):</strong> Sunucu yoktur, tüm pcler eşittir.<br><strong>Sunucu Tabanlı (Server-based):</strong> Yönetim ve güvenlik merkezi sunucudadır.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 mb-1">İletim Teknolojisine Göre</h4>
+                            <p class="text-xs text-gray-600"><strong>Yayın Ağları (Broadcasting):</strong> Mesaj ağdaki herkese gider (Bus, Ring).<br><strong>Anahtarlamalı (Switched):</strong> Veri düğümlerden geçerek hedefe aktarılır.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KONU 1 TESTİ -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">📝 1. Hafta Konu Testi</h2>
+                    <span class="text-xs font-semibold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">10 Soru</span>
+                </div>
+                <div id="quiz-modul1" class="space-y-6"></div>
+                <button onclick="gradeQuiz('modul1')" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition shadow-lg">Testi Tamamla ve Sonucu Gör</button>
+                <div id="score-modul1" class="hidden p-4 rounded-xl text-center font-bold text-lg"></div>
+            </div>
+        </section>
+
+        <!-- MODÜL 2 -->
+        <section id="modul2" class="tab-content space-y-8 max-w-5xl mx-auto hidden">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-sm uppercase tracking-wider">
+                    <span>2. Hafta Ders Özetleri</span>
+                </div>
+                <h1 class="text-3xl font-extrabold text-gray-900">Sayısal Haberleşme ve Veri İletim Teknikleri</h1>
+                <hr class="border-gray-100">
+                <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4">
+                    <p>Sayısal haberleşmede bilgi, ikili tabanda (binary: 0 ve 1) kodlanarak iletilir. Sayısal sinyaller analog sinyallere göre gürültü ve parazitlerden daha az etkilenir, hatalar kolayca tespit edilip düzeltilebilir.</p>
+                    
+                    <h3 class="text-lg font-bold text-gray-800 pt-2">İletşim Türleri:</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Asenkron Seri İletişim:</strong> Veri karakter karakter gönderilir. Karakterin başında <em>Başla (Start - 0)</em> biti, sonunda <em>Dur (Stop - 1)</em> biti ve hata denetimi için <em>Eşlik (Parity)</em> biti bulunur. Yavaştır ama ucuzdur.</li>
+                        <li><strong>Senkron Seri İletişim:</strong> Alıcı ve verici ortak saat darbesi ile eş zamanlı çalışır. Başla/Dur bitleri yoktur; veri büyük bloklar halinde iletilir. Asenkrona göre çok daha hızlıdır.</li>
+                        <li><strong>Paralel İletişim:</strong> Verinin tüm bitleri (örneğin 8 bit) aynı anda farklı hatlardan iletilir. Çok hızlıdır, kısa mesafelerde ve bilgisayar içi veri yollarında tercih edilir.</li>
+                    </ul>
+
+                    <h3 class="text-lg font-bold text-gray-800 pt-2">Veri Akış Türleri:</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                        <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                            <h4 class="font-bold text-indigo-900">Tek Yönlü (Simplex)</h4>
+                            <p class="text-xs text-indigo-800">İletişim sadece tek yönlüdür. Örn: TV yayını, Klavye, Monitör.</p>
+                        </div>
+                        <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                            <h4 class="font-bold text-indigo-900">Yarı Çift Yönlü (Half-Duplex)</h4>
+                            <p class="text-xs text-indigo-800">İki yönlüdür ancak aynı anda yapılamaz, sırayla iletilir. Örn: Telsiz.</p>
+                        </div>
+                        <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                            <h4 class="font-bold text-indigo-900">Tam Çift Yönlü (Full-Duplex)</h4>
+                            <p class="text-xs text-indigo-800">Eşzamanlı olarak her iki yönde veri alınıp verilebilir. Örn: Telefon, Modem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KONU 2 TESTİ -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">📝 2. Hafta Konu Testi</h2>
+                    <span class="text-xs font-semibold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">10 Soru</span>
+                </div>
+                <div id="quiz-modul2" class="space-y-6"></div>
+                <button onclick="gradeQuiz('modul2')" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition shadow-lg">Testi Tamamla ve Sonucu Gör</button>
+                <div id="score-modul2" class="hidden p-4 rounded-xl text-center font-bold text-lg"></div>
+            </div>
+        </section>
+
+        <!-- MODÜL 3 -->
+        <section id="modul3" class="tab-content space-y-8 max-w-5xl mx-auto hidden">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-sm uppercase tracking-wider">
+                    <span>3. Hafta Ders Özetleri</span>
+                </div>
+                <h1 class="text-3xl font-extrabold text-gray-900">Ağ Kabloları ve Bağlantı Elemanları</h1>
+                <hr class="border-gray-100">
+                <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4">
+                    <h3 class="text-lg font-bold text-gray-800">Ağ Kablosu Standartları:</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Koaksiyel Kablo:</strong> Ses ve video iletiminde kullanılır. İnce (Thinnet - 10Base2 - 185m) ve Kalın (Thicknet - 10Base5 - 500m) çeşitleri bulunur. BNC konnektör ile sonlandırılır.</li>
+                        <li><strong>UTP (Korumasız Çift Bükümlü):</strong> En yaygın kullanılan ağ kablosudur. Dolanmış yapısı sinyal bozulmalarını engeller. RJ-45 konnektör ile kullanılır. (Cat5: 100 Mbps, Cat6: 1 Gbps / 250 MHz). Maksimum mesafe 100 metredir.</li>
+                        <li><strong>STP (Korumalı Çift Bükümlü):</strong> Tel çiftleri metal zırh ile kaplıdır. Dış elektromanyetik gürültülerden korur ancak mutlaka topraklanmalıdır.</li>
+                        <li><strong>Fiber Optik:</strong> Veriyi ışık dalgası şeklinde ince cam lifler üzerinden aktarır. Elektromanyetik alanlardan hiç etkilenmez, çok uzun mesafelere yüksek hızla veri taşır. ST/SC/LC konnektörler kullanılır.</li>
+                    </ul>
+
+                    <h3 class="text-lg font-bold text-gray-800 pt-2">Aktif ve Pasif Ağ Cihazları:</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-2 text-xs">
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong>Hub:</strong> Gelen veriyi tüm portlara yayınlar (Broadcast). Ağda fazla trafik ve çarpışma (Collision) oluşturur.</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong>Switch (Anahtar):</strong> MAC adres tablosu tutar. Veriyi sadece hedef porta gönderir, performansı artırır.</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong>Router (Yönlendirici):</strong> IP adreslerine bakarak farklı ağları birbirine bağlar ve en uygun yolu belirler.</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong>Bridge (Köprü):</strong> Aynı protokolü kullanan alt ağları birbirine bağlar, veri paketlerini süzerek trafiği azaltır.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KONU 3 TESTİ -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">📝 3. Hafta Konu Testi</h2>
+                    <span class="text-xs font-semibold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">10 Soru</span>
+                </div>
+                <div id="quiz-modul3" class="space-y-6"></div>
+                <button onclick="gradeQuiz('modul3')" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition shadow-lg">Testi Tamamla ve Sonucu Gör</button>
+                <div id="score-modul3" class="hidden p-4 rounded-xl text-center font-bold text-lg"></div>
+            </div>
+        </section>
+
+        <!-- MODÜL 4 -->
+        <section id="modul4" class="tab-content space-y-8 max-w-5xl mx-auto hidden">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-sm uppercase tracking-wider">
+                    <span>4. Hafta Ders Özetleri</span>
+                </div>
+                <h1 class="text-3xl font-extrabold text-gray-900">OSI Referans Modeli ve Katmanları</h1>
+                <hr class="border-gray-100">
+                <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4">
+                    <p>ISO tarafından 1984 yılında yayınlanan <strong>OSI (Open System Interconnection)</strong> modeli, farklı üreticilerin cihazlarının birbiriyle sorunsuz haberleşmesini sağlayan 7 katmanlı bir standarttır.</p>
+
+                    <div class="space-y-3 my-4">
+                        <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg">
+                            <strong class="text-indigo-950">7. Uygulama Katmanı (Application):</strong> Kullanıcının ağa erişim sağladığı arayüzdür. (HTTP, FTP, SMTP, Telnet).
+                        </div>
+                        <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg">
+                            <strong class="text-indigo-950">6. Sunum Katmanı (Presentation):</strong> Verinin biçimini (formatını) belirler, sıkıştırma ve şifreleme yapar. (JPEG, ASCII, DIVX).
+                        </div>
+                        <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg">
+                            <strong class="text-indigo-950">5. Oturum Katmanı (Session):</strong> İki bilgisayar arasındaki iletişimi başlatır, yönetir ve sonlandırır. (Sockets, RPC, NetBIOS).
+                        </div>
+                        <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg">
+                            <strong class="text-indigo-950">4. İletim / Taşıma Katmanı (Transport):</strong> Veriyi <em>segmentlere</em> böler, port adreslerini yönetir ve akış denetimi sağlar. (TCP, UDP).
+                        </div>
+                        <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg">
+                            <strong class="text-indigo-950">3. Ağ Katmanı (Network):</strong> IP adreslerini ve mantıksal yönlendirmeyi yönetir. Veri birimine <em>paket</em> denir. Router bu katmandadır. (IP, ARP, ICMP).
+                        </div>
+                        <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg">
+                            <strong class="text-indigo-950">2. Veri Bağı Katmanı (Data Link):</strong> Veriyi <em>çerçeve (frame)</em> haline getirir. 48 bitlik fiziksel MAC adreslerini kullanır. MAC ve LLC olarak 2 alt katmana ayrılır. Switch bu katmandadır.
+                        </div>
+                        <div class="p-3 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg">
+                            <strong class="text-indigo-950">1. Fiziksel Katman (Physical):</strong> Verinin bitler (1 ve 0) halinde kablo, radyo sinyali veya ışık üzerinden iletilmesini sağlar. Hub, kablo ve konnektörler bu katmandadır.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KONU 4 TESTİ -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">📝 4. Hafta Konu Testi</h2>
+                    <span class="text-xs font-semibold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">10 Soru</span>
+                </div>
+                <div id="quiz-modul4" class="space-y-6"></div>
+                <button onclick="gradeQuiz('modul4')" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition shadow-lg">Testi Tamamla ve Sonucu Gör</button>
+                <div id="score-modul4" class="hidden p-4 rounded-xl text-center font-bold text-lg"></div>
+            </div>
+        </section>
+
+        <!-- MODÜL 5 -->
+        <section id="modul5" class="tab-content space-y-8 max-w-5xl mx-auto hidden">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-sm uppercase tracking-wider">
+                    <span>5. Hafta Ders Özetleri</span>
+                </div>
+                <h1 class="text-3xl font-extrabold text-gray-900">Ağ Topolojileri (Fiziksel ve Mantıksal)</h1>
+                <hr class="border-gray-100">
+                <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4">
+                    <p>Topoloji, bir ağdaki bilgisayarların nasıl yerleşeceğini, bağlanacağını ve veri akışının nasıl olacağını belirleyen yapıdır. Fiziksel (kablolama) ve Mantıksal (veri akışı) olarak ayrılır.</p>
+
+                    <h3 class="text-lg font-bold text-gray-800 pt-2">Temel Ağ Topolojileri:</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-2">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 mb-1">Doğrusal (Bus) Topoloji</h4>
+                            <p class="text-xs text-gray-600">Tek bir omurga kablo (koaksiyel) kullanılır. Hat sonlarında <strong>Sonlandırıcı (Terminator)</strong> olmak zorundadır. Bir pc bozulursa veya kablo koparsa tüm ağ çöker. Arıza tespiti zordur (Max 30 pc).</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 mb-1">Yıldız (Star) Topoloji</h4>
+                            <p class="text-xs text-gray-600">Günümüzde en yaygın yapıdır. Tüm bilgisayarlar merkezi bir cihaz (Hub/Switch) ile UTP kablo kullanarak bağlanır. Bir pc bozulursa ağ etkilenmez. Ancak merkez cihaz bozulursa tüm ağ durur.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 mb-1">Halka (Ring / Token Ring) Topoloji</h4>
+                            <p class="text-xs text-gray-600">Bilgisayarlar daire şeklinde birbirine bağlıdır. Ağda 3 baytlık <strong>Token (Jeton)</strong> dolanır. Çarpışma riski yoktur ancak tek yönlü halkada tek bir bilgisayarın arızalanması tüm ağı durdurur.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-indigo-900 mb-1">Mesh (Örgü) Topoloji</h4>
+                            <p class="text-xs text-gray-600">Her bilgisayar diğer tüm bilgisayarlarla ayrı ayrı noktadan noktaya bağlıdır. En güvenilir ve en dayanıklı yapıdır ancak aşırı kablolama maliyeti nedeniyle pratikte az kullanılır.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KONU 5 TESTİ -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">📝 5. Hafta Konu Testi</h2>
+                    <span class="text-xs font-semibold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">8 Soru</span>
+                </div>
+                <div id="quiz-modul5" class="space-y-6"></div>
+                <button onclick="gradeQuiz('modul5')" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition shadow-lg">Testi Tamamla ve Sonucu Gör</button>
+                <div id="score-modul5" class="hidden p-4 rounded-xl text-center font-bold text-lg"></div>
+            </div>
+        </section>
+
+        <!-- GENEL SINAV -->
+        <section id="genelSinav" class="tab-content space-y-8 max-w-5xl mx-auto hidden">
+            <div class="bg-gradient-to-r from-amber-500 to-orange-600 p-8 rounded-2xl shadow-lg text-white space-y-2">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Final Testi</span>
+                <h1 class="text-3xl font-extrabold">🏆 INT101 Genel Tüm Konular Sınavı</h1>
+                <p class="text-amber-100 text-sm">Bu sınav 1-5. haftalar arasındaki tüm ders içeriklerini kapsayan karışık sorulardan oluşmaktadır.</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-6">
+                <div id="quiz-genelSinav" class="space-y-6"></div>
+                <button onclick="gradeQuiz('genelSinav')" class="w-full bg-amber-600 text-white font-bold py-4 rounded-xl hover:bg-amber-700 transition shadow-xl text-lg">Sınavı Bitir ve Başarı Notunu Hesapla</button>
+                <div id="score-genelSinav" class="hidden p-6 rounded-xl text-center font-bold text-xl"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SORU VERİ TABANI & SİSTEM SCRIPTLERİ -->
+    <script>
+        const questionsData = {
+            modul1: [
+                { q: "İlk bilgisayar ağı olan ARPANET hangi kurum tarafından ne amaçla oluşturulmuştur?", options: ["IBM - Ticari satış", "DARPA - Askeri haberleşme", "ISO - Standartlaştırma", "IEEE - Kablolama"], correct: 1 },
+                { q: "Aşağıdakilerden hangisi sunucu (server) tabanlı ağların özelliklerinden biridir?", options: ["Sınırlı sayıda pc bağlanabilir", "Her kullanıcı kendi güvenliğini sağlar", "Yönetim ve güvenlik merkezi bir sunucu üzerindedir", "Kurulumu çok ucuz ve basittir"], correct: 2 },
+                { q: "Ağda yönetici niteliği olmayan, sunucudan hizmet alan terminal bilgisayarlara ne ad verilir?", options: ["Server", "Router", "İş İstasyonu (Workstation)", "Switch"], correct: 2 },
+                { q: "Kolay hatırlanan alan adlarını IP adreslerine dönüştüren sistem hangisidir?", options: ["FTP", "DNS", "ARPANET", "VPN"], correct: 1 },
+                { q: "Bir şehri tamamen kapsayacak şekilde yapılandırılan ağ türü hangisidir?", options: ["LAN", "PAN", "MAN", "WAN"], correct: 2 },
+                { q: "Hangisi bilgisayar ağlarının kullanım amaçlarından biri değildir?", options: ["Donanım paylaşımı", "Veri güvenilirliği sağlama", "Yazılımda standartlaşma", "Bireysel bilgisayar maliyetini artırma"], correct: 3 },
+                { q: "Her bilgisayarın eşit statüde olduğu ve sunucunun bulunmadığı ağ türü hangisidir?", options: ["Sunucu tabanlı ağ", "Eşler arası ağ (Peer-to-Peer)", "Geniş alan ağı", "Anahtarlamalı ağ"], correct: 1 },
+                { q: "Bilinen en geniş alan ağı (WAN) örneği aşağıdakilerden hangisidir?", options: ["İnternet", "Okul Laboratuvar Ağı", "VPN", "Bluetooth Ağı"], correct: 0 },
+                { q: "Bir bilgisayarın yayın yapmadan önce ağı izleyip paketleri herkese gönderdiği iletim teknolojisi nedir?", options: ["Anahtarlamalı Ağ", "Devre Anahtarlamalı Ağ", "Yayın Ağları (Broadcasting)", "Noktadan Noktaya Ağ"], correct: 2 },
+                { q: "Kişisel cihazların kendi arasında kurduğu sanal ağ yapısına ne ad verilir?", options: ["LAN", "VPN / PAN", "MAN", "WAN"], correct: 1 }
+            ],
+            modul2: [
+                { q: "Asenkron seri iletişimde verinin başladığını ve bittiğini gösteren bitler hangileridir?", options: ["Start (0) - Stop (1)", "Start (1) - Stop (0)", "Parity - Data", "Baud - Bit"], correct: 0 },
+                { q: "Gelen ve giden verinin EŞZAMANLI olarak her iki yönde aktarılabildiği veri akışı hangisidir?", options: ["Simplex", "Half-Duplex", "Full-Duplex", "Monoplex"], correct: 2 },
+                { q: "Televizyon yayını veya klavye ile bilgisayar arasındaki iletişim hangi veri akış türüne örnektir?", options: ["Half-duplex", "Full-duplex", "Simplex", "Asenkron"], correct: 2 },
+                { q: "Verinin tüm bitlerinin aynı anda birden fazla hat üzerinden iletildiği iletişim tekniği hangisidir?", options: ["Seri İletişim", "Paralel İletişim", "Asenkron İletişim", "Senkron İletişim"], correct: 1 },
+                { q: "Aynı anda iki cihazın veri alıp gönderebildiği ama bunu SIRAYLA yaptığı (Telsiz gibi) sistem hangisidir?", options: ["Simplex", "Half-Duplex", "Full-Duplex", "Paralel"], correct: 1 },
+                { q: "Bir ağın bir anda iletebileceği en yüksek bilgi kapasitesine ne ad verilir?", options: ["Baud Rate", "Bant Genişliği (Bandwidth)", "Eşlik Biti", "Segment"], correct: 1 },
+                { q: "Senkron iletişimi asenkron iletişimden ayıran en temel fark nedir?", options: ["Daha yavaş olması", "Başla ve Dur bitlerinin bulunmaması", "Kablo kullanılmaması", "Paralel aktarım yapması"], correct: 1 },
+                { q: "Asenkron seri iletimde hataları tespit etmek için kullanılan kontrol biti hangisidir?", options: ["Start biti", "Stop biti", "Eşlik (Parity) biti", "Baud biti"], correct: 2 },
+                { q: "Sayısal haberleşmenin analog haberleşmeye göre en büyük avantajı nedir?", options: ["Gürültü ve parazitlerden daha az etkilenmesi", "Kabloların daha kalın olması", "Sadece ses iletebilmesi", "Ekstra modeme ihtiyaç duyması"], correct: 0 },
+                { q: "Saniyede iletilen bit miktarını belirten birim hangisidir?", options: ["Hertz", "Bps (Bit per second)", "Byte", "Watt"], correct: 1 }
+            ],
+            modul3: [
+                { q: "Kat5/Kat6 UTP kablolarını sonlandırmak için kullanılan konnektör hangisidir?", options: ["BNC", "RJ-11", "RJ-45", "ST-SC"], correct: 2 },
+                { q: "Portlarına bağlı cihazların MAC adreslerini tutarak veriyi sadece hedef cihaza yönlendiren cihaz hangisidir?", options: ["Hub", "Switch (Anahtar)", "Repeater", "Transceiver"], correct: 1 },
+                { q: "Veriyi elektrik sinyalleri yerine ışık dalgaları ile aktaran ve elektromanyetik alandan etkilenmeyen kablo hangisidir?", options: ["UTP", "STP", "Koaksiyel", "Fiber Optik"], correct: 3 },
+                { q: "IEEE standartlarına göre UTP kablolu bir ağda iki cihaz arası maksimum kablo mesafesi kaç metredir?", options: ["50m", "100m", "185m", "500m"], correct: 1 },
+                { q: "Gelen veriyi ayırt etmeden tüm portlarına göndererek ağda gereksiz trafik oluşturan cihaz hangisidir?", options: ["Switch", "Router", "Hub", "Gateway"], correct: 2 },
+                { q: "İki farklı ağ protokolünü (örneğin TCP/IP ile PROFIBUS) birbirine dönüştüren cihaz hangisidir?", options: ["Bridge", "Gateway (Geçit Yolu)", "Repeater", "Switch"], correct: 1 },
+                { q: "İnce Koaksiyel (10Base2) kabloda maksimum segment uzunluğu kaç metredir?", options: ["100m", "185m", "500m", "1000m"], correct: 1 },
+                { q: "Zayıflayan elektriksel sinyalleri güçlendirip yenileyerek ağ mesafesini artıran cihaz hangisidir?", options: ["Repeater (Tekrarlayıcı)", "Hub", "NIC", "Splitter"], correct: 0 },
+                { q: "İki bilgisayarı doğrudan (Hub/Switch olmadan) birbirine bağlamak için hangi kablo dizilimi kullanılır?", options: ["Düz Bağlantı", "Çapraz (Crossover) Bağlantı", "Fiber Bağlantı", "Koaksiyel Bağlantı"], correct: 1 },
+                { q: "Telefon sinyalleri ile ADSL internet sinyallerini birbirinden ayıran küçük cihaz hangisidir?", options: ["Modem", "Access Point", "Splitter", "Transceiver"], correct: 2 }
+            ],
+            modul4: [
+                { q: "OSI modelinde IP adreslerinin ve mantıksal yönlendirmenin yönetildiği 3. katman hangisidir?", options: ["Fiziksel Katman", "Veri Bağı Katmanı", "Ağ Katmanı", "İletim Katmanı"], correct: 2 },
+                { q: "OSI modelinde verinin formatının belirlendiği, şifreleme ve sıkıştırma işlemlerinin yapıldığı katman hangisidir?", options: ["Uygulama", "Sunum (Presentation)", "Oturum", "Taşıma"], correct: 1 },
+                { q: "Yönlendirici (Router) cihazı OSI modelinin hangi katmanında tanımlanmıştır?", options: ["1. Katman (Fiziksel)", "2. Katman (Veri Bağı)", "3. Katman (Ağ)", "4. Katman (İletim)"], correct: 2 },
+                { q: "OSI modelinde 48 bitlik MAC adresleri hangi katmanda kullanılır?", options: ["Fiziksel Katman", "Veri Bağı Katmanı (Data Link)", "Ağ Katmanı", "Oturum Katmanı"], correct: 1 },
+                { q: "Aşağıdakilerden hangisi İletim (Transport) katmanında çalışan bir protokoldür?", options: ["HTTP", "IP", "TCP", "JPEG"], correct: 2 },
+                { q: "İletişimi başlatan, yöneten ve sonlandıran OSI katmanı hangisidir?", options: ["Oturum Katmanı (Session)", "Sunum Katmanı", "Uygulama Katmanı", "Veri Bağı Katmanı"], correct: 0 },
+                { q: "Verileri 1 ve 0'lardan oluşan elektrik veya ışık sinyallerine dönüştüren OSI katmanı hangisidir?", options: ["Fiziksel Katman", "Ağ Katmanı", "Veri Bağı Katmanı", "İletim Katmanı"], correct: 0 },
+                { q: "Aşağıdakilerden hangisi OSI modeli katmanlarından biri değildir?", options: ["Sunum Katmanı", "Oturum Katmanı", "İnternet Katmanı", "Fiziksel Katman"], correct: 2 },
+                { q: "OSI modelinin katman sıralaması aşağıdan yukarıya (1'den 7'ye) hangi seçenekte doğrudur?", options: ["Uygulama-Sunum-Oturum-İletim-Ağ-Veri Bağı-Fiziksel", "Fiziksel-Veri Bağı-Ağ-İletim-Oturum-Sunum-Uygulama", "Fiziksel-Ağ-Veri Bağı-İletim-Oturum-Sunum-Uygulama", "Veri Bağı-Fiziksel-Ağ-İletim-Sunum-Oturum-Uygulama"], correct: 1 },
+                { q: "Aşağıdaki protokollerden hangisi Uygulama (Application) katmanında çalışmaz?", options: ["HTTP", "FTP", "TELNET", "IP"], correct: 3 }
+            ],
+            modul5: [
+                { q: "Tüm bilgisayarların merkezi bir cihaza (Hub/Switch) bağlı olduğu topoloji hangisidir?", options: ["Doğrusal (Bus)", "Yıldız (Star)", "Halka (Ring)", "Mesh"], correct: 1 },
+                { q: "Doğrusal (Bus) topolojide kablo uçlarındaki sinyal yansımasını önlemek için ne kullanılır?", options: ["Repeater", "Terminör (Sonlandırıcı)", "Splitter", "Switch"], correct: 1 },
+                { q: "Ağdaki her bilgisayarın diğer tüm bilgisayarlarla ayrı ayrı kablolarla bağlı olduğu en dayanıklı topoloji nedir?", options: ["Mesh (Örgü) Topoloji", "Yıldız Topoloji", "Ağaç Topoloji", "Halka Topoloji"], correct: 0 },
+                { q: "Halka (Ring) topolojisinde ağda dolanarak veri iletim hakkını belirleyen 3 baytlık paket nedir?", options: ["Frame", "Token (Jeton)", "Segment", "IP"], correct: 1 },
+                { q: "Merkezi switch cihazı bozulduğunda tüm ağı devre dışı bırakan topoloji hangisidir?", options: ["Bus", "Yıldız (Star)", "Mesh", "Ring"], correct: 1 },
+                { q: "Genellikle farklı yıldız topolojisindeki ağları birbirine bağlamak için kullanılan hiyerarşik yapı nedir?", options: ["Ağaç (Tree) Topoloji", "Mesh Topoloji", "Halka Topoloji", "Ortak Yol Topolojisi"], correct: 0 },
+                { q: "Doğrusal (Bus) topolojinin en büyük dezavantajı nedir?", options: ["Çok pahalı olması", "Omurga kablosu koptuğunda tüm ağın çökmesi", "Merkez cihaza ihtiyaç duyması", "UTP kablo kullanılması"], correct: 1 },
+                { q: "Bir ağdaki veri akışının nasıl olacağını belirleyen topoloji türüne ne ad verilir?", options: ["Fiziksel Topoloji", "Mantıksal Topoloji", "Coğrafi Topoloji", "Matematiksel Topoloji"], correct: 1 }
+            ]
+        };
+
+        // Bütün modülleri birleştirip Genel Sınav oluşturma
+        questionsData.genelSinav = [
+            ...questionsData.modul1,
+            ...questionsData.modul2,
+            ...questionsData.modul3,
+            ...questionsData.modul4,
+            ...questionsData.modul5
+        ];
+
+        // Sekme Değiştirme
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-item').forEach(el => {
+                el.classList.remove('bg-indigo-600', 'text-white', 'shadow-md');
+                el.classList.add('text-slate-300');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+                activeBtn.classList.remove('text-slate-300');
+            }
+        }
+
+        // Testleri Dinamik Oluşturma
+        function renderQuizzes() {
+            Object.keys(questionsData).forEach(modulKey => {
+                const container = document.getElementById(`quiz-${modulKey}`);
+                if(!container) return;
+                
+                container.innerHTML = questionsData[modulKey].map((qObj, index) => `
+                    <div class="p-5 rounded-xl border border-gray-100 bg-gray-50/50 space-y-3" id="${modulKey}-qbox-${index}">
+                        <p class="font-semibold text-gray-900">${index + 1}. ${qObj.q}</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            ${qObj.options.map((opt, optIdx) => `
+                                <button onclick="selectOption('${modulKey}', ${index}, ${optIdx})" 
+                                        id="${modulKey}-opt-${index}-${optIdx}" 
+                                        class="option-btn text-left p-3 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-700 hover:border-indigo-400">
+                                    <span class="font-bold text-gray-400 mr-2">${String.fromCharCode(65 + optIdx)})</span> ${opt}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            });
+        }
+
+        const userAnswers = {};
+
+        function selectOption(modulKey, qIdx, optIdx) {
+            if(!userAnswers[modulKey]) userAnswers[modulKey] = {};
+            userAnswers[modulKey][qIdx] = optIdx;
+
+            // Görsel seçim efekti
+            const options = document.querySelectorAll(`[id^="${modulKey}-opt-${qIdx}-"]`);
+            options.forEach(btn => btn.classList.remove('border-indigo-600', 'bg-indigo-50', 'text-indigo-900'));
+            
+            const selectedBtn = document.getElementById(`${modulKey}-opt-${qIdx}-${optIdx}`);
+            selectedBtn.classList.add('border-indigo-600', 'bg-indigo-50', 'text-indigo-900');
+        }
+
+        // Test Değerlendirme
+        function gradeQuiz(modulKey) {
+            const questions = questionsData[modulKey];
+            const answers = userAnswers[modulKey] || {};
+            let score = 0;
+
+            questions.forEach((qObj, index) => {
+                const selectedOpt = answers[index];
+                const qBox = document.getElementById(`${modulKey}-qbox-${index}`);
+
+                questions[index].options.forEach((_, optIdx) => {
+                    const btn = document.getElementById(`${modulKey}-opt-${index}-${optIdx}`);
+                    btn.disabled = true; // Test bittiğinde butonları kilitler
+                    btn.classList.remove('border-indigo-600', 'bg-indigo-50', 'text-indigo-900');
+
+                    if(optIdx === qObj.correct) {
+                        btn.classList.add('correct-ans');
+                    }
+                    if(selectedOpt === optIdx && selectedOpt !== qObj.correct) {
+                        btn.classList.add('wrong-ans');
+                    }
+                });
+
+                if(selectedOpt === qObj.correct) {
+                    score++;
+                }
+            });
+
+            // Sonuç Gösterimi
+            const scoreDiv = document.getElementById(`score-${modulKey}`);
+            scoreDiv.classList.remove('hidden');
+            const percent = Math.round((score / questions.length) * 100);
+
+            if(percent >= 70) {
+                scoreDiv.className = "p-4 rounded-xl text-center font-bold text-lg bg-emerald-100 text-emerald-800 border border-emerald-300";
+                scoreDiv.innerHTML = `🎉 Tebrikler! ${questions.length} sorudan ${score} tanesini doğru cevapladınız. (Başarı Puanı: %${percent})`;
+            } else {
+                scoreDiv.className = "p-4 rounded-xl text-center font-bold text-lg bg-rose-100 text-rose-800 border border-rose-300";
+                scoreDiv.innerHTML = `⚠️ ${questions.length} sorudan ${score} tanesini doğru cevapladınız. Notları tekrar incelemenizi öneririz. (Başarı Puanı: %${percent})`;
+            }
+        }
+
+        // Sayfa Yüklendiğinde Testleri Hazırla
+        window.onload = renderQuizzes;
+    </script>
+</body>
+</html>
